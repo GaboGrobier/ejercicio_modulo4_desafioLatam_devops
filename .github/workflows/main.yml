@@ -36,7 +36,7 @@ jobs:
 
 
       - name: verificar estado de s3
-        if: usccess()
+        if: success()
         run: echo "S3 correcto "
         
 
