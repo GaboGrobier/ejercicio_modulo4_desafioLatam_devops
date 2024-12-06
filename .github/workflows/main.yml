@@ -48,7 +48,20 @@ jobs:
       - name: Subida de archivos
         if: success()
         run: echo " subida de archivos con exito "
+
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+          --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+          --paths "/*"
+
+      - name: Invalidacion realizada 
+        if: success()
+        run: echo " Realizacion de invalidacion con exito "
         
+
+    
 
 
 
