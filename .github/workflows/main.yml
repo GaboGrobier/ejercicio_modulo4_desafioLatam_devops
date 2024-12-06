@@ -36,14 +36,18 @@ jobs:
 
 
       - name: verificar estado de s3
-        if: usccess()
+        if: success()
         run: echo "S3 correcto "
         
 
       - name: Deploy application
         run: |
-          aws s3 sync ./index.html s3://my-bucket-name
-          aws s3 sync ./error.html s3://my-bucket-name
+          aws s3 sync ./index.html ${{secrets.AWS_S3_PATH}}
+          aws s3 sync ./error.html ${{secrets.AWS_S3_PATH}}
+        
+      - name: Subida de archivos
+        if: success()
+        run: echo " subida de archivos con exito "
         
 
 
