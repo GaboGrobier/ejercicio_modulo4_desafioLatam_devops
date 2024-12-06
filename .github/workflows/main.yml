@@ -44,6 +44,9 @@ jobs:
         run: |
           aws s3 sync ./index.html s3://my-bucket-name
           aws s3 sync ./error.html s3://my-bucket-name
+      - name: Subida de archivos
+        if: success()
+        run: echo " subida de archivos con exito "
         
 
 
