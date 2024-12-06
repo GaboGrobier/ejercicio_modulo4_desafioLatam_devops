@@ -42,8 +42,8 @@ jobs:
 
       - name: Deploy application
         run: |
-          aws s3 sync ./index.html ${{secrets.AWS_S3_PATH}}
-          aws s3 sync ./error.html ${{secrets.AWS_S3_PATH}}
+          aws s3 cp ./index.html ${{secrets.AWS_S3_PATH}}
+          aws s3 cp ./error.html ${{secrets.AWS_S3_PATH}}
         
       - name: Subida de archivos
         if: success()
